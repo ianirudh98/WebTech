@@ -1,0 +1,23 @@
+{% load static %}
+{% block base_head %}
+<link rel="stylesheet" href='{% static "css/custom_product.css" %}'>
+{% endblock %}
+<div class="card" style="width: 18rem;">
+    <a href="{{ instance.get_absolute_url }}">
+            {% if instance.image %}
+            <img src="{{ instance.image.url }}" class="card-img" alt="Product Image">
+            {% endif %}        
+            <div class="card-body">
+            <h1 class="card-title">{{ instance.title }}</h1>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <a href='{% url "update" obj.slug %}' class="btn btn-success">Add to Cart</a>
+                </div>
+                <div class="col-6">
+                    <a href='{% url "list_update" obj.slug %}' class="btn btn-secondary">Delete</a>
+                </div>
+            </div>
+        </div>
+    </a>
+</div><br>

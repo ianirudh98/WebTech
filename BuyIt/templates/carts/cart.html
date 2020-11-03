@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block base_head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block content %}
+{% if empty %}
+<center><h1 style="letter-spacing: 3px; font-family: Arial, Helvetica, sans-serif;">{{ empty_message }}</h1></center>
+{% else %}
+<br>
+<div class="row">
+    <div class="col-8">
+        <div class="container">
+            <table class="table table-bordered">
+                <thead align="center">
+                    <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    {% for item in cart.products.all %}
+                    <tr>
+                    <td><img src="{{ item.image.url }}" width="90px" height="135px"></td>
+                    <td>{{ item }} <a href='{% url "update" item.slug %}'><i class="fa fa-trash-o"></i></a></td>
+                    <td>&#8377; {{ item.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot align="center">
+                    <tr>
+                        <td colspan="2">Total Price</td>
+                        <td>&#8377; {{ cart.total }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="container">
+            <table class="table table-bordered">
+                <tbody align="center">
+                    <tr>
+                        <td>CART TOTAL:</td>
+                        <td>{{ order.cart.total }}</td>
+                    </tr>
+                    <tr>
+                        <td>SHIPPING:</td>
+                        <td>{{ order.shipping_total }}</td>
+                    </tr>
+                    <tr>
+                        <td>ORDER TOTAL:</td>
+                        <td>{{ order.order_total }}</td>
+                    </tr>
+                    {% if user.is_authenticated %}
+                    <tr>
+                        <td colspan="2"><a href='{% url "address" %}' class="btn btn-secondary btn-lg">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="2"><a href='{% url "address" %}' class="btn btn-secondary btn-lg disabled">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

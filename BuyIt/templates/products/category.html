@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block base_head %}
+<link rel="stylesheet" href='{% static "css/custom_category.css" %}'>
+{% endblock %}
+{% block content %}
+{% for img in shop_list %}
+    <img src="{{ img.display.url }}" width="100%">
+{% endfor %}
+<br>
+<div class="col-12">
+    <div class="featured" style="padding: 15px;">
+        <h1 style="letter-spacing: 4px; font-family:Arial, Helvetica, sans-serif;">#FEATURED</h1>
+        <p>Bring charm with your looks</p>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-2" style="text-align: center; padding: 0;">
+    {% for obj in category_list %}
+        <a class = "anchor" href="{{ obj.category_slug }}">
+            <p style="margin-bottom: 0;">{{ obj.sub_category }}</p>
+        </a><br>
+    {% endfor %}
+    </div>
+    <div class="col-10" style="padding: 0;">
+    {% for pic in shop_list %}
+        <img src="{{ pic.image1.url }}" width="49%">
+        <img src="{{ pic.image2.url }}" width="49%">
+        <img src="{{ pic.image3.url }}" width="49%">
+        <img src="{{ pic.image4.url }}" width="49%">
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

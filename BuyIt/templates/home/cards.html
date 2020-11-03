@@ -1,0 +1,14 @@
+{% load static %}
+{% block base_head %}
+<link rel="stylesheet" href='{% static "css/custom.css" %}'>
+<link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+{% endblock %}
+<div class="card" style="width: 18rem;">
+    <a href="{{ obj.shop_slug }}">
+        <img src="{{ instance.image.url }}" class="card-img-top" alt="Image">
+        <div class="card-body">
+            <center><p class="card-text" style="font-family: 'Alef';font-size: 56px;">{{ instance.category }}</p></center>
+        </div>
+    </a>
+</div>
+<br>

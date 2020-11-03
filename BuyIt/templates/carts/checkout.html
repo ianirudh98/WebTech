@@ -1,0 +1,11 @@
+{% if user.is_authenticated %}
+<h1>CART TOTAL:</h1>{{ order.cart.total }}
+<h1>ORDER TOTAL:</h1>{{ order.order_total }}
+<form method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+{% else %}
+<a href='{% url "login" %}' class="btn btn-secondary">LOGIN</a>
+<a href='{% url "register" %}' class="btn btn-secondary">REGISTER </a>
+{% endif %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <title>BuyIt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device.width, initial_scale=1, shrink_to_fit=no">
+    {% include "base/css.html" %}
+    <link href='https://fonts.googleapis.com/css?family=Aleo' rel='stylesheet'>
+    <body>
+        {% include "base/navbar.html" %}
+        <br><br>
+        <center><h1 style="letter-spacing: 2px; font-family: Aleo;">REGISTER</h1></center>
+        <div class="container" style="align-content: center;">
+            <center>
+                <form method="POST">{% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-secondary">Submit</button>
+                </form>
+            </center>
+        </div>
+        {% include "base/js.html" %}
+        <br><br>
+        <div class="footer" style="background-color: #C4C4C4; width: 100%; padding: 45px; text-align: center; margin: 0;position: fixed; left: 0; bottom: 0;">
+            <p style="margin-bottom: 0;font-size: 1.2vw;">
+                BuyIt - An Exclusive Purchase Paradise <br>
+                DBMS Project by Harshith Diwakar
+            </p>
+        </div>
+    </body>
+</html>

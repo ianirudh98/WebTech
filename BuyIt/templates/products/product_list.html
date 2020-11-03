@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        {% for obj in product_list %}
+        <br>
+        <div class="col">
+            {% include "products/snippets/cards.html" with instance=obj %}
+            {% if forloop.counter|divisibleby:3 %}
+            </div></div><div class="row">
+            {% else %}
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

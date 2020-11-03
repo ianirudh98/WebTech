@@ -1,0 +1,12 @@
+.card-text {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.card_body {
+	text-align: center;
+}
+
+a:hover {
+  text-decoration: none;
+}

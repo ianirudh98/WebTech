@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% include "css/details.css" %}
+{% block content %}
+{% for obj in detail_list %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="{{ obj.image.url }}" width="100%">
+        </div>
+        <div class="col-6">
+            <h1>{{ obj.title }}</h1>
+            <h4>{% lorem %}</h4>
+            <h2>&#8377; {{ obj.price }}</h2>
+            {% if user.is_authenticated %}
+            <a href='{% url "update" obj.slug %}' class="btn btn-success">Add to Cart</a>
+            <a href='{% url "list_update" obj.slug %}' class="btn btn-danger">Wishlist</a>
+            {% else %}
+            <a href='{% url "update" obj.slug %}' class="btn btn-success disabled">Add to Cart</a>
+            <a href='{% url "list_update" obj.slug %}' class="btn btn-danger disabled">Wishlist</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<br>
+{% endfor %}
+{% endblock %}
